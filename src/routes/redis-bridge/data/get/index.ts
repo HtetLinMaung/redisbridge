@@ -1,6 +1,7 @@
 import { brewBlankExpressFunc, throwErrorResponse } from "code-alchemy";
 import isAuth from "../../../../utils/is-auth";
 import { getRedis } from "../../../../utils/redis";
+import isJSONParsable from "../../../../utils/is-json-parsable";
 
 export default brewBlankExpressFunc(async (req, res) => {
   const method = req.method.toLowerCase();

@@ -1,4 +1,4 @@
-function isJSONParsable(data: string) {
+export default function isJSONParsable(data: string) {
   try {
     JSON.parse(data);
     return true;
