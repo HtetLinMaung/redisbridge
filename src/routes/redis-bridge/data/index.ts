@@ -1,6 +1,7 @@
 import { brewBlankExpressFunc, throwErrorResponse } from "code-alchemy";
 import isAuth from "../../../utils/is-auth";
 import { getRedis } from "../../../utils/redis";
+import { log } from "starless-logger";
 
 export default brewBlankExpressFunc(async (req, res) => {
   const method = req.method.toLowerCase();
@@ -10,6 +11,7 @@ export default brewBlankExpressFunc(async (req, res) => {
   isAuth(req);
 
   const { key, value } = req.body;
+  log(req.body);
 
   // check if key and value are provided
   if (!key || !value) {
@@ -20,6 +22,7 @@ export default brewBlankExpressFunc(async (req, res) => {
     key,
     typeof value == "string" ? value : JSON.stringify(value)
   );
+
   res.json({
     code: 200,
     message: "Data saved successfully",
