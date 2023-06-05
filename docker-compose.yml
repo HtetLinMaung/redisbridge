@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  redisbridge:
+    image: htetlinmaung/redisbridge
+    build: .
+    ports:
+      - "7070:3000"
+    environment:
+      - express_handler_mode=native
+      - API_KEY=17ec868113571a9a5c9368cf8cdcb72f
+      - REDIS_CONNECTION_STRING=redis://redis:6379
+  redis:
+    image: redis:latest
+    # ports:
+    #   - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+    
